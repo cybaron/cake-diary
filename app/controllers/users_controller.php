@@ -41,8 +41,6 @@ class UsersController extends AppController {
         }
       } else {
         $this->Session->setFlash('パスワードを正しく入力して下さい。');
-        $this->data['User']['new_password'] = '';
-        $this->data['User']['password_confirm'] = '';
       }
     }
   }
