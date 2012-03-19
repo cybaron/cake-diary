@@ -1,5 +1,4 @@
-/app/config/database.php
-/app/config/*.default
-/app/tmp
-/plugins
-/vendors
+app/config/database.php
+app/config/*.default
+app/tmp/*
+!empty
