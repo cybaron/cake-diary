@@ -18,6 +18,10 @@ class UsersController extends AppController {
   function login() {
     if($this->Auth->user()) {
       $this->redirect(array('controller' => 'posts', 'action' => 'index'));
+    } else {
+      if(!empty($this->data)) {
+        $this->Session->setFlash($this->Auth->loginError);
+      }
     }
   }
 
