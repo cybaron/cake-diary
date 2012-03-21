@@ -10,7 +10,13 @@ class User extends AppModel {
     'email' => array(
       'notempty' => array(
         'rule' => 'notEmpty',
-        'message' => '何か入力して下さい。'
+        'message' => '何か入力して下さい。',
+        'last'    => true
+      ),
+      'email' => array(
+        'rule' => 'email',
+        'message' => '正しくemailを入力して下さい。',
+        'last'    => true
       ),
       'unique' => array(
         'rule' => 'isUnique',
