@@ -13,10 +13,10 @@ class UsersControllerTest extends CakeTestCase {
     echo '<hr>';
   }
 
-  function testAdd() {
-    $result = $this->testAction('/users/add', array('result' => 'contents'));
-    debug($result);
-  }
+//  function testAdd() {
+//    $result = $this->testAction('/users/add', array('return' => 'contents'));
+//    debug($result);
+//  }
 //
 //  function testAddSuccess() {
 //  }
@@ -37,25 +37,31 @@ class UsersControllerTest extends CakeTestCase {
 //  }
 
   function testLogin() {
-    $result = $this->testAction('/users/login', array('result' => 'contents'));
+    $result = $this->testAction('/users/login', array('return' => 'contents'));
+    $expected = array(
+                'User' => array(
+                  'email' => '',
+                  'password' => ''
+                ));
     debug($result);
+    //debug(htmlentities($result));
   }
 
-  function testLoginSuccess() {
-    $data = array(
-      'User' => array(
-        'email'    => 'cybaron@gmail.com',
-        'password' => 'password'
-      )
-    );
-    $result = $this->testAction('/users/login', array(
-      'fixturize' => true,
-      'data'      => $data, 
-      'method'    => 'post',
-      'return'    => 'contents'
-    )); 
-    debug($result);
-  }
+//  function testLoginSuccess() {
+//    $data = array(
+//      'User' => array(
+//        'email'    => 'cybaron@gmail.com',
+//        'password' => 'password'
+//      )
+//    );
+//    $result = $this->testAction('/users/login', array(
+//      'fixturize' => true,
+//      'data'      => $data, 
+//      'method'    => 'post',
+//      'return'    => 'contents'
+//    )); 
+//    debug($result);
+//  }
 //
 //  function testLoginFailedEmptyEmail() {
 //    $data = array(
