@@ -16,23 +16,34 @@ class TestUsersController extends UsersController {
 }
 
 class UsersControllerTest extends CakeTestCase {
-  function startCase() {
-    echo '<h1>テストケースを開始します</h1>';
-  }
-  function endCase() {
-    echo '<h1>テストケースを終了します</h1>';
-  }
-  function startTest($method) {
-    echo '<h3>メソッド「' . $method . '」を開始します</h3>';
+  function setUp() {
+    runkit_method_redefine("UsersController" , "redirect"  , '$url, $status = null, $exit = true'  , "return true;" );
+
     $this->Users =& new TestUsersController();
     $this->Users->constructClasses();
   }
-  function endTest($method) {
+  function tearDown() {
     unset($this->Users);
     ClassRegistry::flush();
-    echo '<hr>';
+  }
+  function startCase() {
+    echo "<h1>テストケースを開始します</h1>\n";
+  }
+  function endCase() {
+    echo "<h1>テストケースを終了します</h1>\n";
+  }
+  function startTest($method) {
+    echo "<h3>メソッド「" . $method . "」を開始します</h3>\n";
+  }
+  function endTest($method) {
+    echo "<hr>\n";
   }
 
+  function testAdd() {
+    $this->Users->add();
+    $result = $this->Users->viewVars;
+    var_dump($result);
+  }
 //  function testAdd() {
 //    $result = $this->testAction('/users/add', array('return' => 'contents'));
 //    debug($result);
@@ -65,6 +76,7 @@ class UsersControllerTest extends CakeTestCase {
                 ));
     debug($result);
     //debug(htmlentities($result));
+
   }
 
 //  function testLoginSuccess() {
