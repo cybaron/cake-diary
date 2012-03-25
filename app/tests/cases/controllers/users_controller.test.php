@@ -1,4 +1,20 @@
 <?php
+App::import('Controller', 'Users');
+
+class TestUsersController extends UsersController {
+  var $autoRender = false;
+
+  function redirect($url, $status = null, $exit = true) {
+    $this->redirectUrl = $url;
+  }
+  function render($action = null, $layout = null, $file = null) {
+    $this->renderedAction = $action;
+  }
+  function _stop($status = 0) {
+    $this->stopped = $status;
+  }
+}
+
 class UsersControllerTest extends CakeTestCase {
   function startCase() {
     echo '<h1>テストケースを開始します</h1>';
@@ -8,8 +24,12 @@ class UsersControllerTest extends CakeTestCase {
   }
   function startTest($method) {
     echo '<h3>メソッド「' . $method . '」を開始します</h3>';
+    $this->Users =& new TestUsersController();
+    $this->Users->constructClasses();
   }
   function endTest($method) {
+    unset($this->Users);
+    ClassRegistry::flush();
     echo '<hr>';
   }
 
