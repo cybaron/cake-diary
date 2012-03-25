@@ -20,10 +20,15 @@ class User extends AppModel {
     'password' => array(
       'notempty' => array(
         'rule' => 'notEmpty',
-        'message' => ''
+        'message' => '何か入力して下さい。'
       ),
     ),
     'new_password' => array(
+      'notempty' => array(
+        'rule' => 'notEmpty',
+        'last' => true,
+        'message' => '何か入力して下さい。'
+      ),
       'between' => array(
         'rule' => array('between', 6, 20),
         'required' => true,
