@@ -1,4 +1,5 @@
 app/config/database.php
 app/config/*.default
 app/tmp/*
+app/vendors/simpletest
 !empty
