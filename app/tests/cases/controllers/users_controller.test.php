@@ -42,7 +42,7 @@ class UsersControllerTest extends CakeTestCase {
   function testAdd() {
     $this->Users->add();
     $result = $this->Users->viewVars;
-    var_dump($result);
+//    var_dump($result);
   }
 //  function testAdd() {
 //    $result = $this->testAction('/users/add', array('return' => 'contents'));
@@ -74,7 +74,7 @@ class UsersControllerTest extends CakeTestCase {
                   'email' => '',
                   'password' => ''
                 ));
-    debug($result);
+    //debug($result);
     //debug(htmlentities($result));
 
   }
